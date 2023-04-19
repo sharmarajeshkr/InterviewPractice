@@ -7,10 +7,23 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class forEachExample {
+public class ForEachExample {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("Alex", "Brian", "Charles");
-        names.forEach(new Consumer<String>() {
+        List<String> listNames = Arrays.asList("Alex", "Brian", "Charles");
+        System.out.println("New Implementation");
+        //1 . For each example for list using Consume (Functional Interface)
+        listNames.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        });
+
+        // 2 . Directly using foreach
+        listNames.forEach(System.out :: println);
+        System.out.println("New Implementation");
+
+        listNames.forEach(new Consumer<String>() {
             @Override
             public void accept(String s) {
                 System.out.println(s);
@@ -18,7 +31,7 @@ public class forEachExample {
         });
 
         System.out.println("#############Calling Using Custom Implementation##############");
-        names.forEach(new CustomConsumerImpl());
+        listNames.forEach(new CustomConsumerImpl());
 
         System.out.println("#############Calling Map##############");
         Map<String, String> map = new HashMap<String, String>();

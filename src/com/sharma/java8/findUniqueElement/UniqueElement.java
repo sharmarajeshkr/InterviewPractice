@@ -20,6 +20,13 @@ public class UniqueElement {
         Set<Integer> uniqueElement= list.stream().collect(Collectors.toSet());
         uniqueElement.forEach(System.out :: println);
 
+        List<Integer> uniqueListElements =
+        list.parallelStream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        System.out.println(uniqueListElements);
+
 
     }
 
