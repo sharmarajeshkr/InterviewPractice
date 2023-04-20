@@ -4,14 +4,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
 
 public class SortedMapExample {
     public static void main(String[] args) {
 
-        // Creating a Map with electoric items and prices
+        // Creating a Map with electronic items and prices
         Map<String, Integer> ItemToPrice = new HashMap<>();
         ItemToPrice.put("Sony Braiva", 1000);
         ItemToPrice.put("Apple iPhone 6S", 1200);
@@ -22,36 +21,36 @@ public class SortedMapExample {
         System.out.println("unsorted Map: " + ItemToPrice);
 
         System.out.println("\n Iterate Using for loop Normal");
-        for (Map.Entry<String,Integer> entry  : ItemToPrice.entrySet())
-            System.out.println( "Key "+entry.getKey() + "\t Value "+entry.getValue());
+        for (Map.Entry<String, Integer> entry : ItemToPrice.entrySet())
+            System.out.println("Key " + entry.getKey() + "\t Value " + entry.getValue());
 
         System.out.println("###################################");
 
 
         System.out.println("\n Iterate Using Iterator Normal");
-           Iterator itr =  ItemToPrice.entrySet().iterator();
-           while (itr.hasNext()){
-               Map.Entry entry= (Map.Entry) itr.next();
-               System.out.println( "Key "+entry.getKey() + "\t Value "+entry.getValue());
-           }
+        Iterator itr = ItemToPrice.entrySet().iterator();
+        while (itr.hasNext()) {
+            Map.Entry entry = (Map.Entry) itr.next();
+            System.out.println("Key " + entry.getKey() + "\t Value " + entry.getValue());
+        }
 
         System.out.println("###################################");
         System.out.println("\n Iterate Using forEach");
-        ItemToPrice.forEach(
-                (key,value) -> System.out.println( "Key "+key + "\t Value "+value)
-        );
-
+        ItemToPrice
+                .forEach(
+                        (key, value) -> System.out.println("Key " + key + "\t Value " + value)
+                );
 
         System.out.println("###################################");
 
         // sorting Map by values in ascending order, price here
         ItemToPrice.entrySet().stream()
-                .sorted(Map.Entry.<String, Integer> comparingByValue())
+                .sorted(Map.Entry.<String, Integer>comparingByValue())
                 .forEach(System.out::println);
         // Sorted By Key
         System.out.println("Sorted By Key");
         ItemToPrice.entrySet().stream()
-                .sorted(Map.Entry.<String, Integer> comparingByKey())
+                .sorted(Map.Entry.<String, Integer>comparingByKey())
                 .forEach(System.out::println);
 
 
@@ -70,18 +69,18 @@ public class SortedMapExample {
              System.out.println("sorted Map: " +sortedByPrice);
          */
 
-        Map<String, Integer> sortedByKey = ItemToPrice .entrySet() .stream()
-                .sorted(Map.Entry.<String, Integer> comparingByKey())
+        Map<String, Integer> sortedByKey = ItemToPrice.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByKey())
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
-        System.out.println("sorted Map: " +sortedByKey);
+        System.out.println("sorted Map: " + sortedByKey);
 
 
-        Map<String, Integer> sortedByValue = ItemToPrice .entrySet() .stream()
-                .sorted(Map.Entry.<String, Integer> comparingByValue())
+        Map<String, Integer> sortedByValue = ItemToPrice.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue())
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
-        System.out.println("sorted Map: " +sortedByValue);
+        System.out.println("sorted Map: " + sortedByValue);
 
 
     }

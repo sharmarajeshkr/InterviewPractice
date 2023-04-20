@@ -25,15 +25,23 @@ public class TestEmployeePredicates {
         List<Employee> empGenderandAge =
                 employees.stream()
                         .filter(emp -> (emp.getGender().equals("M")) &&
-                                (emp.getAge()) > 21).collect(
-                        Collectors.toList()
+                                (emp.getAge()) > 21)
+                        .collect(Collectors.toList()
                 );
         System.out.println(empGenderandAge);
         // All Employees whose age is more than a given age
+        // By using custom method
 
-        List<Employee> empAge = employees.stream()
+        List<Employee> empAgeCustomMethod = employees.stream()
                                 .filter(isAgeMoreThan(21))
                                 .collect(Collectors.toList());
+        System.out.println(empAgeCustomMethod);
+
+        // All Employees whose age is more than a given age
+
+        List<Employee> empAge = employees.stream()
+                .filter(emp->emp.getAge() > 21)
+                .collect(Collectors.toList());
         System.out.println(empAge);
     }
 
