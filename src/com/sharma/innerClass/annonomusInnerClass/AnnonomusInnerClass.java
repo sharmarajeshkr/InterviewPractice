@@ -4,21 +4,19 @@ package com.sharma.innerClass.annonomusInnerClass;
 public class AnnonomusInnerClass {
 
     public static void main(String[] args) {
-        // Overiding taste method instead of implemention by class
+        // Override taste method instead of providing implementation by class
 
         AnnonomusCustomClass a = new AnnonomusCustomClass() {
             public void taste() {
                 System.out.println("From class Inner Class");
             }
-
-            ;
         };
         a.taste();
 
         AnnoInnerInterface ai = new AnnoInnerInterface() {
             @Override
             public void m1() {
-
+                System.out.println("I am Interface: Called using Annonamos Inner class");
             }
 
             @Override

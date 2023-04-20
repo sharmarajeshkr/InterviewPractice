@@ -34,11 +34,9 @@ public class StreamExample {
 
 
         List<Integer> listOfAllIntegers =
-                listOfLists.stream().flatMap(
-                        x -> x.stream()
-                ).collect(
-                        Collectors.toList()
-                );
+                listOfLists.stream()
+                        .flatMap(x -> x.stream())
+                        .collect(Collectors.toList());
 
         System.out.println(listOfAllIntegers);
 
@@ -59,27 +57,22 @@ public class StreamExample {
         System.out.println("Find or remove duplicates from List");
 
         // ArrayList with duplicate elements
-        ArrayList<Integer> numbersList
-                = new ArrayList<>(Arrays.asList(1, 1, 2, 3, 3, 3, 4, 5, 6, 6, 6, 7, 8));
-        System.out.println("Original values "+numbersList);
+        ArrayList<Integer> numbersList = new ArrayList<>(Arrays.asList(1, 1, 2, 3, 3, 3, 4, 5, 6, 6, 6, 7, 8));
+        System.out.println("Original values " + numbersList);
         List<Integer> listWithoutDuplicates =
                 numbersList.stream()
                         .distinct()
-                        .collect(
-                                Collectors.toList()
-                        );
-        System.out.println("After Removing Duplicate values "+listWithoutDuplicates);
+                        .collect(Collectors.toList());
+        System.out.println("After Removing Duplicate values " + listWithoutDuplicates);
         // Collectors.toSet() to remove duplicates
         Set<Integer> setWithoutDuplicate =
-                    numbersList.stream()
+                numbersList.stream()
                         .collect(Collectors.toSet());
-        System.out.println("Remove duplicate using toSet() "+setWithoutDuplicate);
+        System.out.println("Remove duplicate using toSet() " + setWithoutDuplicate);
     }
 
 
     public static void Stream() {
-        //streamMain();
-
         List<String> memberNames = new ArrayList<>();
         memberNames.add("Amitabh");
         memberNames.add("Shekhar");
@@ -92,33 +85,25 @@ public class StreamExample {
 
         // Intermediate Operation
         // 1. Filter Example
-        List<String> filterName =
-                memberNames.stream().filter(
-                        name -> (name.startsWith("A") || name.startsWith("S"))
-                ).collect(
-                        Collectors.toList()
-                );
-
+        List<String> filterName = memberNames.stream()
+                        .filter( name -> (name.startsWith("A") || name.startsWith("S")) )
+                        .collect(Collectors.toList());
         System.out.println(filterName);
 
         // 2. Map Intermediate operator is used to convert one object type yo another object
-        //via the provided function
+        // via the provided function
         // Example : Accept List of string and convert only  name's start with "A" to uppercase
         List<String> mapNameUpperCase =
-                memberNames.stream().filter(
-                        name -> name.startsWith("A")
-                ).map(
-                        name -> name.toUpperCase()
-                ).collect(
-                        Collectors.toList()
-                );
-
+                memberNames.stream().filter(name -> name.startsWith("A"))
+                        .map( name -> name.toUpperCase() )
+                        .collect(Collectors.toList());
         System.out.println(mapNameUpperCase);
 
         // 3. Sorted : Sorted is an intermediate operation that returns a sorted view of the stream.
-        //             The elements are sorted in natural order unless you pass a custom Comparator.
+        //  The elements are sorted in natural order unless you pass a custom Comparator.
 
-        memberNames.stream().sorted().forEach(System.out::println);
+        memberNames.stream()
+                .sorted().forEach(System.out::println);
 
     }
 

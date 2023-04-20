@@ -34,15 +34,14 @@ public class A {
         ItemToPrice.put("A", 2);
         ItemToPrice.put("A", 4);
 
+        // Type of way to iterate map
 
-        // Type of eay to iterate map
-
-        ItemToPrice.entrySet()
-                        .forEach(System.out::println);
-
-
+        ItemToPrice
+                .entrySet()
+                .forEach(System.out::println);
 
         System.out.println("unsorted Map: " + ItemToPrice);
+
         Map<String, Integer> itemsToPrice =
                 ItemToPrice.entrySet()
                         .stream()
@@ -51,17 +50,9 @@ public class A {
                                 Collectors.toMap(Map.Entry::getKey , Map.Entry:: getValue
                                 , (e1,e2)->e2 , LinkedHashMap::new)
                         );
-        /*
-                        .collect(toMap(Map.Entry::getKey, Map.Entry::getValue,
-                                (e2, e1) -> e2, LinkedHashMap::new))
-
-         */
 
         System.out.println(itemsToPrice);
     }
-
-
-
 
 
     static void sortByValueAndReturnMapDescendingOrder() {

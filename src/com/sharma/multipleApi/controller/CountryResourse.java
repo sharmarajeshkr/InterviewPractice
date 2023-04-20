@@ -33,7 +33,9 @@ public class CountryResourse {
 	  List<Country> countriesByRegion =  countryClient.getCountriesByRegionAsync("europe");	  
 	  
 	  List<String> europeanFrenchSpeakingCountries = new ArrayList<>(
-	 						countriesByLanguage.stream().map(Country::getName).collect(Collectors.toList())); 
+	 						 countriesByLanguage.stream()
+	 						.map(Country::getName)
+	 						.collect(Collectors.toList()));
 	 	System.out.println("European French Speaking Countries " +europeanFrenchSpeakingCountries); 
 	 	europeanFrenchSpeakingCountries.retainAll(countriesByRegion.stream().map(Country::getName).collect(
 	  										Collectors.toList()));

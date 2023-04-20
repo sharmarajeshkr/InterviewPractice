@@ -20,9 +20,9 @@ public class MultiGroup {
         employeesList.add(new Employee(107, "Gagy", "Software Engineer", "Male", 15_00_000));
 
         // Group By Destination and return List of Employee
-        Map<String,List<Employee>> data =
-        employeesList.stream()
-                .collect( Collectors.groupingBy( Employee::getDesignation));
+        Map<String, List<Employee>> data =
+                employeesList.stream()
+                        .collect(Collectors.groupingBy(Employee::getDesignation));
 
         System.out.println(data);
 
@@ -31,11 +31,12 @@ public class MultiGroup {
         // Grouping by designation and Gender two properties and need to get the count.
 
         Map<String, Map<String, List<Employee>>> multipleFieldsMapList =
-
                 employeesList.stream()
-                        .collect(Collectors.groupingBy(Employee::getDesignation,
-                                Collectors.groupingBy(Employee::getGender)
-                        ));
+                        .collect(
+                                Collectors.groupingBy(Employee::getDesignation,
+                                        Collectors.groupingBy(Employee::getGender)
+                                )
+                        );
         System.out.println(multipleFieldsMapList);
 
         // group by - multiple fields

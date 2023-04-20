@@ -20,11 +20,11 @@ class Person {
 
 public class A {
     public static void main(String[] args) {
-            iterateList();
+        // iterateList();
         // addPrifixSuffix();
         //repeatedCharacter();
         // nonRepeatedCharacter();
-        // List<Student> removeDuplicatePersons = removeDuplicatePersons();
+        List<Student> removeDuplicatePersons = removeDuplicatePersons();
         // List<Character> characters = removeDuplicateChracters();
         // List<Integer> list = removeDuplliacte();
         //randomNumbers();
@@ -34,14 +34,15 @@ public class A {
     // How to check if list is empty in Java 8 using Optional,
     // if not null iterate through the list and print the object
     static void iterateList() {
-
         List<Student> students = Arrays.asList(
                 new Student("Math", "John", "Smith", "Miami", 19),
                 new Student("Math", "John", "Smith", "Miami", 9),
                 new Student("Programming", "Mike", "Miles", "New York", 21),
                 new Student("Math", "Michael", "Peterson", "New York", 20),
                 new Student("Math", "James", "Robertson", "Miami", 20),
-                new Student("Programming", "Kyle", "Miller", "Miami", 20)
+                new Student("Programming", "Kyle", "Miller", "Miami", 20),
+                null,
+                new Student(null, null, null, null, 1)
         );
 
         String studentNames =
@@ -49,40 +50,38 @@ public class A {
                         .orElseGet(Collections::emptyList)
                         .stream()
                         .filter(Objects::nonNull)
+                        .filter(student -> Objects.nonNull(student.getName()))
                         .map(student -> student.getName())
-                        .collect(Collectors.toSet()).stream().sorted(Collections.reverseOrder())
+                        .collect(Collectors.toSet())
+                        .stream()
+                        .sorted(Collections.reverseOrder())
                         .collect(Collectors.joining("-"));
         System.out.println(studentNames);
 
     }
-    
+
 
     static void repeatedCharacter() {
         String input = "Java Hungry Blog Alive is Awesome";
         input.chars()
                 .mapToObj(ch -> (char) ch)
-                .collect(
-                        Collectors.groupingBy(Function.identity(), Collectors.counting())
-                ).entrySet()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
                 .stream()
                 .filter(count -> count.getValue() > 1)
                 .map(obj -> obj.getKey())
                 .forEach(
                         val -> System.out.println(val)
                 );
-
-        ;
     }
 
 
     static void nonRepeatedCharacter() {
         String input = "Java Hungry Blog Alive is Awesome";
         Map<Character, Long> map =
-                input.chars()  // IntStream
-                        .mapToObj(c -> Character.valueOf((char) c))
-                        .collect(Collectors.groupingBy(
-                                Function.identity(), Collectors.counting()
-                        ));
+                input.chars()
+                        .mapToObj(c -> (char) c)
+                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(map);
         List<Character> chars =
                 map.entrySet()
@@ -128,10 +127,7 @@ public class A {
                 .collect(Collectors.toSet())
                 .stream()
                 .collect(Collectors.toList());
-
-
     }
-
 
     static List<Integer> removeDuplliacte() {
         return Arrays.asList(1, 2, 3, 4, 1, 2, 3)
