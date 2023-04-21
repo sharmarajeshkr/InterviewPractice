@@ -1,4 +1,4 @@
-package com.sharma.api.responce.model;
+/*package com.sharma.api.responce.model;
 
 public class Country {
 	private String name;
@@ -10,4 +10,4 @@ public class Country {
     public void setName(String name) {
         this.name = name;
     }
-}
+}*/

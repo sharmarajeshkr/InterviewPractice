@@ -163,9 +163,8 @@ public class A {
         List<String> stringList = Arrays.asList("Hello", "Interview", "Questions", "Answers", "Ram", "for");
         stringList.stream().filter(
                 str -> str.length() > 3
-        ).collect(
-                Collectors.toList()
-        ).forEach(new Consumer<String>() {
+        ).collect( Collectors.toList() )
+                .forEach(new Consumer<String>() {
             @Override
             public void accept(String s) {
                 System.out.println(s);

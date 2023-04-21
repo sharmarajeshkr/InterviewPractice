@@ -8,7 +8,7 @@ public class AppCode {
         HashMap<EmployeeTest, String> emp = new HashMap<EmployeeTest, String>();
         EmployeeTest e1 = new EmployeeTest(1, "ABC");
         EmployeeTest e2 = new EmployeeTest(2, "MNP");
-        EmployeeTest e3 = new EmployeeTest(3, "ABC");
+        EmployeeTest e3 = new EmployeeTest(1, "ABC");
 
         emp.put(e1, "Test1");
         emp.put(e2, "Test2");
@@ -50,11 +50,11 @@ class EmployeeTest {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof EmployeeTest that)) return false;
-        return Objects.equals(name, that.name);
+        return this.id == ((EmployeeTest) o).getId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(id);
     }
 }

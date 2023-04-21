@@ -14,12 +14,12 @@ import static java.util.stream.Collectors.toMap;
 public class A {
     public static void main(String[] args) {
         sortValueByMap();
-        //sortValueByMap();
-        // sortByKey();
-        // sortByValue();
-        // sortByValueAndReturnMap();
-        //sortByValueAndReturnMapDescendingOrder();
-        // sortingMapByValueInJava8();
+        sortValueByMap();
+        sortByKey();
+        sortByValue();
+        sortByValueAndReturnMap();
+        sortByValueAndReturnMapDescendingOrder();
+        sortingMapByValueInJava8();
     }
 
     static void sortingMapByValueInJava8() {

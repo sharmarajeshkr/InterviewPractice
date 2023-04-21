@@ -34,8 +34,8 @@ public class SortedEmployeeExample {
                 .collect(Collectors.toList());
         System.out.println(sortedEmpBySalary);
 
-        // Note : Below is the wromg Implementation .
-        // when there is sorting on multiple filrs then we have to use
+        // Note : Below is the wrongly Implemented.
+        // when there is sorting on multiple fields then we have to use
         //  sorted(sortByName.thenComparing()) Custom sorting on two attribute
         //
         System.out.println("Sorted Emp List by Salary and name");

@@ -1,4 +1,4 @@
-package com.sharma.innerClass.staticInner;
+package com.sharma.innerClass.staticInnerClass;
 
 public class StaticInnerClass {
     public static void main(String[] args) {
